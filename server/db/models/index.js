@@ -1,6 +1,7 @@
 const User = require('./user')
 const Cart = require('./cart')
 const CartCandy = require('./cartCandy')
+const Candy = require('./candy')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -20,5 +21,6 @@ const CartCandy = require('./cartCandy')
 module.exports = {
   User,
   CartCandy,
-  Cart
+  Cart,
+  Candy
 }
