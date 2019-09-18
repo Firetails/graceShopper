@@ -9,7 +9,7 @@ describe('CartCandy model', () => {
   describe('amount field', () => {
     let test
     beforeEach(async () => {
-      test = await CartCandy.create({amount: 2})
+      test = await CartCandy.create({candyId: 1, cartId: 1, amount: 2})
     })
 
     it('has an amount field of type integer', () => {
@@ -25,5 +25,17 @@ describe('CartCandy model', () => {
         expect(typeof test2.candyId).to.be.a('number')
       })
     })
-  })
+  }) //end describe candyId field
+
+  // describe('remove candy', () => {
+  //   let cart2
+  //   beforeEach(async () => {
+  //     cart2 = await Cart.create({candies: [1, 2, 3]})
+  //   })
+  //   it('removes all of a type of candy from the candies array and returns the removed candy', () => {
+  //     expect(cart2.remove(1)).to.deep.equal(1)
+  //     cart2.remove(1)
+  //     expect(cart2.candies).to.deep.equal([2, 3])
+  //   })
+  // }) //end describe remove method
 })

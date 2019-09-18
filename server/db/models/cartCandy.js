@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Cart = db.model('cart')
-const Candy = db.model('candy')
+const {Cart, Candy} = require('../models')
 
 const CartCandy = db.define('cartCandy', {
   // BLOCKER: waiting on candy model for foreign keys -- H
   candyId: {
     type: Sequelize.INTEGER,
+    allowNull: false,
     references: {
       model: Candy,
       key: 'id'
@@ -14,6 +14,7 @@ const CartCandy = db.define('cartCandy', {
   },
   cartId: {
     type: Sequelize.INTEGER,
+    allowNull: false,
     references: {
       model: Cart,
       key: 'id'
