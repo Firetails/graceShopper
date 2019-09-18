@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const Cart = require('../models/cart')
 const db = require('../db')
+const CartCandy = db.model('cartCandy')
 
 const Candy = db.define('candy', {
   name: {
@@ -32,10 +32,12 @@ const Candy = db.define('candy', {
   }
 })
 
-Candy.prototype.addToCart = async function(cartId) {
-  this.addCart(cartId)
-  const cart = await Cart.findByPk(cartId)
-  cart.addCandy(this.id)
+Candy.prototype.addToCart = function(cartId, amount) {
+  return CartCandy.create({
+    candyId: this.id,
+    cartId: cartId,
+    amount: amount
+  })
 }
 
 module.exports = Candy
