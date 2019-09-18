@@ -41,7 +41,7 @@ const candies = [
   }
 ]
 
-const seedCart = []
+const carts = [{status: 'cart'}, {status: 'cart'}, {status: 'cart'}]
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -54,6 +54,12 @@ async function seed() {
   await Promise.all(
     candies.map(candy => {
       return Candies.create(candy)
+    })
+  )
+
+  await Promise.all(
+    carts.map(cart => {
+      return Cart.create(cart)
     })
   )
 
