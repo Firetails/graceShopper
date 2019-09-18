@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
+const Cart = require('../models/cart')
 const db = require('../db')
 
-module.exports = db.define('candy', {
+const Candy = db.define('candy', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -30,3 +31,11 @@ module.exports = db.define('candy', {
     type: Sequelize.DECIMAL
   }
 })
+
+Candy.prototype.addToCart = async function(cartId) {
+  this.addCart(cartId)
+  const cart = await Cart.findByPk(cartId)
+  cart.addCandy(this.id)
+}
+
+module.exports = Candy
