@@ -3,13 +3,13 @@ const db = require('../index')
 const CartCandy = require('./cartCandy')
 
 describe('CartCandy model', () => {
-  beforeEach(() => {
-    return db.sync({force: true})
-  })
+  // beforeEach(() => {
+  //   return db.sync({force: true})
+  // })
   describe('amount field', () => {
     let test
     beforeEach(async () => {
-      test = await CartCandy.create({candyId: 1, cartId: 1, amount: 2})
+      test = await CartCandy.create({amount: 2})
     })
 
     it('has an amount field of type integer', () => {
@@ -19,14 +19,26 @@ describe('CartCandy model', () => {
   describe('candyId field', () => {
     let test2
     beforeEach(async () => {
-      test2 = await CartCandy.create({candyId: 1, cartId: 1, amount: 2})
+      test2 = await CartCandy.create({amount: 2})
 
       it('has a candyId field of type integer', () => {
         expect(typeof test2.candyId).to.be.a('number')
       })
     })
   }) //end describe candyId field
-
+  describe('increment method', () => {
+    let test
+    beforeEach(async () => {
+      test = await CartCandy.create({amount: 2})
+    })
+    it('increases the amount field of the candy instance by one each time it is called', () => {
+      test.increment()
+      expect(test.amount).to.be.equal(3)
+      // test.increment();
+      // test.increment()
+      // expect(test.amount)to.be.equal(5)
+    })
+  })
   // describe('remove candy', () => {
   //   let cart2
   //   beforeEach(async () => {
@@ -38,4 +50,4 @@ describe('CartCandy model', () => {
   //     expect(cart2.candies).to.deep.equal([2, 3])
   //   })
   // }) //end describe remove method
-})
+}) //end test block

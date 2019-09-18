@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Candy} = require('../server/db/models')
+const {User, Candy, Cart} = require('../server/db/models')
 
 const seedCandy = [
   {
@@ -15,6 +15,7 @@ const seedCandy = [
   }
 ]
 
+const seedCart = []
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
