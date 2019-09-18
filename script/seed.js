@@ -1,8 +1,5 @@
-const db = require('../server/db/db.js')
 const {green, red} = require('chalk')
-const {User} = require('../server/db/models')
 const Candies = require('../server/db/models/Candy')
-
 const db = require('../server/db')
 const {User, Candy, Cart} = require('../server/db/models')
 
