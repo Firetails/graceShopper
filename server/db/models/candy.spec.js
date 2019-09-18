@@ -16,14 +16,8 @@ describe('Candy model', () => {
       candy = await Candy.create({name: 'testcandy', quantity: 15})
     })
     it('associates an amount of a specific candy with a specific cart', async () => {
-      candy.addToCart(cart.id, 5)
-      let search = await cartCandy.findAll({
-        where: {
-          cartId: cart.id,
-          candyId: candy.id
-        }
-      })
-      expect(search.amount).to.be.equal(5)
+      let test = await candy.addToCart(cart.id, 5)
+      expect(test.amount).to.be.equal(5)
     })
   })
 })
