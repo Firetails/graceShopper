@@ -3,6 +3,7 @@ const Candies = require('../server/db/models/Candy')
 const db = require('../server/db')
 const {User, Candy, Cart} = require('../server/db/models')
 
+
 // here's some sample candies to get you started
 // feel free to edit these or add your own!
 const candies = [
