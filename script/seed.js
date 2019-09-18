@@ -1,7 +1,7 @@
-const db = require('../server/db/db.js')
 const {green, red} = require('chalk')
-const {User} = require('../server/db/models')
 const Candies = require('../server/db/models/Candy')
+const db = require('../server/db')
+const {User, Candy, Cart} = require('../server/db/models')
 
 // here's some sample candies to get you started
 // feel free to edit these or add your own!
@@ -41,6 +41,7 @@ const candies = [
   }
 ]
 
+const seedCart = []
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')

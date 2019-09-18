@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getAllCandiesThunk} from '../reducers/reducer'
+import {getAllCandiesThunk} from '../reducers/candy-reducer'
 
 class Candy extends React.Component {
   handleDeletion(event, candyId) {
