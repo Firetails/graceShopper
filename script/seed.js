@@ -57,7 +57,7 @@ async function seed() {
   )
 
   console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${seedCandy.length} candies`)
+  console.log(`seeded ${candies.length} candies`)
 
   console.log(`seeded successfully`)
 }
