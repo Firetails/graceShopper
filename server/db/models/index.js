@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const User = require('./user')
 const Cart = require('./cart')
-const CartCandies = require('./cartCandy')
+const CartCandy = require('./cartCandy')
 const Candy = require('./candy')
 
 /**
@@ -11,8 +11,8 @@ const Candy = require('./candy')
  *    BlogPost.belongsTo(User)
  */
 
-Candy.belongsToMany(Cart, {as: 'candyId', through: CartCandies})
-Cart.belongsToMany(Candy, {as: 'cartId', through: CartCandies})
+Candy.belongsToMany(Cart, {as: 'candyId', through: CartCandy})
+Cart.belongsToMany(Candy, {as: 'cartId', through: CartCandy})
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
@@ -23,5 +23,5 @@ module.exports = {
   User,
   Cart,
   Candy,
-  CartCandies
+  CartCandy
 }
