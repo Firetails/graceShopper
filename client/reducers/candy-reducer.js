@@ -25,7 +25,6 @@ const gotSelectedCandy = candy => ({
 export const getAllCandiesThunk = () => async dispatch => {
   try {
     const {data} = await Axios.get('/api/candies')
-    console.log('Retrieved the following data: ', data)
     dispatch(gotAllCandies(data))
   } catch (err) {
     console.log('Unable to retrieve candies')
