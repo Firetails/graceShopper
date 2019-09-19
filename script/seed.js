@@ -1,8 +1,8 @@
 const {green, red} = require('chalk')
 const Candies = require('../server/db/models/Candy')
 const db = require('../server/db')
-const {User, Candy, Cart, CartCandies} = require('../server/db/models')
-
+const {User, Candy, Cart} = require('../server/db/models')
+const CartCandy = db.model('cartCandy')
 // here's some sample candies to get you started
 // feel free to edit these or add your own!
 const candies = [
