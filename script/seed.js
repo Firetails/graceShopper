@@ -1,7 +1,7 @@
 const {green, red} = require('chalk')
 const Candies = require('../server/db/models/Candy')
 const db = require('../server/db')
-const {User, Candy, Cart} = require('../server/db/models')
+const {User, Candy, Cart, CartCandies} = require('../server/db/models')
 
 // here's some sample candies to get you started
 // feel free to edit these or add your own!
@@ -42,6 +42,12 @@ const candies = [
 ]
 
 const carts = [{status: 'cart'}, {status: 'cart'}, {status: 'cart'}]
+
+const cartCandy = [
+  {cartId: 1, candyId: 1, amount: 3},
+  {cartId: 1, candyId: 2, amount: 3},
+  {cartId: 2, candyId: 1, amount: 3}
+]
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -60,6 +66,12 @@ async function seed() {
   await Promise.all(
     carts.map(cart => {
       return Cart.create(cart)
+    })
+  )
+
+  await Promise.all(
+    cartCandy.map(el => {
+      return CartCandies.create(el)
     })
   )
 

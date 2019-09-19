@@ -3,7 +3,7 @@ import {expect} from 'chai'
 import axios from 'axios'
 import {createStore, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import reducer, {getAllCandiesThunk} from './reducer'
+import reducer, {getAllCandiesThunk, getSelectedCandyThunk} from './reducer'
 import enforceImmutableState from 'redux-immutable-state-invariant'
 
 let store
@@ -53,6 +53,23 @@ describe('Thunks', () => {
       const state = store.getState()
       console.log('Current state: ', state)
       expect(state.candies).to.deep.equal([])
+    })
+  })
+
+  describe('GET /candies/candyId succeeds', () => {
+    let candyOne = {
+      name: 'someJCandy',
+      imageUrl:
+        'http://cdn.shopify.com/s/files/1/0768/4331/products/UHA-Puchao-Fruit-Mix-4-Flavor-wm-800x72_1024x1024.jpg?v=1502413813'
+    }
+    beforeEach(() => {
+      mockAxios.onGet('/api/candies/1').reply(200, [candyOne])
+    })
+
+    it('sets the received candies on state', async () => {
+      await store.dispatch(getSelectedCandyThunk(1))
+      const state = store.getState()
+      expect(state.selectedCandy).to.deep.equal([candyOne])
     })
   })
 })
