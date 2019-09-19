@@ -11,8 +11,8 @@ const Candy = require('./candy')
  *    BlogPost.belongsTo(User)
  */
 
-Candy.belongsToMany(Cart, {as: 'cart', through: CartCandies})
-Cart.belongsToMany(Candy, {as: 'candy', through: CartCandies})
+Candy.belongsToMany(Cart, {as: 'cart', through: CartCandy})
+Cart.belongsToMany(Candy, {as: 'candy', through: CartCandy})
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'
