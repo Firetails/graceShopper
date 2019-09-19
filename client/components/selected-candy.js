@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getSelectedCandyThunk} from '../reducers/reducer'
+import {getSelectedCandyThunk} from '../reducers/candy-reducer'
 import Axios from 'axios'
 import priceConverter from '../../public/utilities'
 
