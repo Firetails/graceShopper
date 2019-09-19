@@ -1,6 +1,7 @@
 const {expect} = require('chai')
 const db = require('../index')
-const Cart = require('./cart')
+const cartCandy = db.model('cartCandy')
+const {Cart, Candy} = require('../models')
 
 describe('Cart model', () => {
   beforeEach(() => {
@@ -17,5 +18,6 @@ describe('Cart model', () => {
     it('has a default value of cart', () => {
       expect(cart1.status).to.be.equal('cart')
     })
-  }) //end describe candies field
+  }) //end describe status field
+  //end describe remove method
 }) //end describe cart model
