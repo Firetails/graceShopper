@@ -33,7 +33,6 @@ class SelectedCandy extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const {selectedCandy} = this.props
     return (
       <div>
