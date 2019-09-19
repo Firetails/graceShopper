@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const CartCandy = db.model('cartCandy')
 
-module.exports = db.define('candy', {
+const Candy = db.define('candy', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -30,3 +31,13 @@ module.exports = db.define('candy', {
     type: Sequelize.DECIMAL
   }
 })
+
+Candy.prototype.addToCart = function(cartId, amount) {
+  return CartCandy.create({
+    candyId: this.id,
+    cartId: cartId,
+    amount: amount
+  })
+}
+
+module.exports = Candy
