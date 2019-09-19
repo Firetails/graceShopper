@@ -12,6 +12,24 @@ router.get('/:cartId', async (req, res, next) => {
   }
 })
 
+router.put('/:cartId', async (req, res, next) => {
+  try {
+    await CartCandy.update(
+      {
+        amount: req.query.amount
+      },
+      {
+        where: {
+          cartId: req.params.cartId,
+          candyId: req.query.candyId
+        }
+      }
+    )
+    res.send('Candy Amount Updated')
+  } catch (error) {
+    next(error)
+  }
+})
 router.delete('/:cartId', async (req, res, next) => {
   try {
     await Cart.destroy({
