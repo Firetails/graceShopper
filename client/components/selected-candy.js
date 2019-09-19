@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSelectedCandyThunk} from '../reducers/reducer'
 import Axios from 'axios'
+import priceConverter from '../../public/utilities'
 
 class SelectedCandy extends React.Component {
   constructor() {
@@ -44,7 +45,7 @@ class SelectedCandy extends React.Component {
             <img src={selectedCandy.imageUrl} />
             <p>{selectedCandy.description}</p>
             <p>{selectedCandy.ingredients}</p>
-            <h6>Price: ${selectedCandy.price} /lb </h6>
+            <h6>Price: ${priceConverter(selectedCandy.price)} /lb </h6>
             <form onSubmit={this.onSubmit}>
               <label>Quantity: </label>
               <input

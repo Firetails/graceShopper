@@ -3,7 +3,7 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
-import candy from '../reducers/reducer'
+import candy from '../reducers/candy-reducer'
 
 const reducer = combineReducers({user, candy})
 const middleware = composeWithDevTools(

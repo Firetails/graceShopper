@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const User = require('./user')
 const Cart = require('./cart')
-const CartCandies = require('./cartCandy')
+const CartCandy = require('./cartCandy')
 const Candy = require('./candy')
 
 /**
@@ -23,5 +23,5 @@ module.exports = {
   User,
   Cart,
   Candy,
-  CartCandies
+  CartCandy
 }
