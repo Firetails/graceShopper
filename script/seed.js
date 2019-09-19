@@ -1,5 +1,5 @@
 const {green, red} = require('chalk')
-const Candies = require('../server/db/models/Candy')
+const Candies = require('../server/db/models/candy')
 const db = require('../server/db')
 const {User, Candy, Cart, CartCandy} = require('../server/db/models')
 
@@ -15,7 +15,7 @@ const candies = [
     ingredients:
       'Glucose syrup, Sugar, Hydrogenated Palm Kernel Oil, Gelatin, Natural and Artificial Flavors, Strawberry juice from concentrate, DL-Malic Acid, Citric Acid, Emulsifiers, Sodium lactate Solution, and Natural colors (Beta-Carotene, Carmine)',
     quantity: 50,
-    price: 3.99
+    price: 399
   },
   {
     name: 'Peguin Cider Mochi Candy',
@@ -26,7 +26,7 @@ const candies = [
     ingredients:
       'Glucose syrup, Sugar, Hydrogenated Palm Kernel Oil, Gelatin, Natural and Artificial Flavors, Strawberry juice from concentrate, DL-Malic Acid, Citric Acid, Emulsifiers, Sodium lactate Solution, and Natural colors (Beta-Carotene, Carmine)',
     quantity: 75,
-    price: 2.99
+    price: 299
   },
   {
     name: 'Happy Nikukyu Polar Bear Paw Gummies - White Soda',
@@ -37,7 +37,7 @@ const candies = [
     ingredients:
       'Glucose syrup, Sugar, Hydrogenated Palm Kernel Oil, Gelatin, Natural and Artificial Flavors, Strawberry juice from concentrate, DL-Malic Acid, Citric Acid, Emulsifiers, Sodium lactate Solution, and Natural colors (Beta-Carotene, Carmine)',
     quantity: 30,
-    price: 5.99
+    price: 599
   }
 ]
 

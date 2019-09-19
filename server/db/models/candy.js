@@ -28,7 +28,10 @@ const Candy = db.define('candy', {
     }
   },
   price: {
-    type: Sequelize.DECIMAL
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
   }
 })
 
