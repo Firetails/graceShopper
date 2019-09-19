@@ -41,7 +41,6 @@ const candies = [
   }
 ]
 
-const seedCart = []
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
