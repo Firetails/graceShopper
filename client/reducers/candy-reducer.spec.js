@@ -3,7 +3,10 @@ import {expect} from 'chai'
 import axios from 'axios'
 import {createStore, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import reducer, {getAllCandiesThunk, getSelectedCandyThunk} from './reducer'
+import reducer, {
+  getAllCandiesThunk,
+  getSelectedCandyThunk
+} from './candy-reducer'
 import enforceImmutableState from 'redux-immutable-state-invariant'
 
 let store

@@ -41,7 +41,7 @@ export const getSelectedCandyThunk = candyId => async dispatch => {
 }
 
 //reducers
-const rootReducer = (state = initialState, action) => {
+const candyReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_ALL_CANDIES:
       return {...state, candies: action.candies}
@@ -52,4 +52,4 @@ const rootReducer = (state = initialState, action) => {
   }
 }
 
-export default rootReducer
+export default candyReducer
