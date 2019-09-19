@@ -13,11 +13,7 @@ class Candies extends React.Component {
   }
 
   render() {
-    console.log('From component: ', this.props)
     return (
-      // <div>
-      //   <p>Candy Component</p>
-      // </div>
       <div className="all-containers">
         {!this.props.candies ? (
           <NoCandies />
@@ -34,7 +30,7 @@ class Candies extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  candies: state.candies
+  candies: state.candy.candies
 })
 
 const mapDispatchToProps = dispatch => ({

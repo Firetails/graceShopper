@@ -42,8 +42,8 @@ form div {
 }
 
 img {
-  width: 70px;
-  height: 70px;
+  width: 200px;
+  height: 200px;
 }
 
 .all-containers {
@@ -63,8 +63,6 @@ img {
 
 .item-container {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   border: 1px solid black;

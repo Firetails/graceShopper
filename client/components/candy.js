@@ -12,7 +12,10 @@ class Candy extends React.Component {
       <div className="item-container">
         <a href={`/candies/${this.props.candy.id}`}>
           <div className="sub-container-header">
-            <p>{this.props.candy.name}</p>
+            <h1>{this.props.candy.name}</h1>
+            <img src={this.props.candy.imageUrl} />
+            <p>{this.props.candy.description}</p>
+            <p>Price: {this.props.candy.price}</p>
           </div>
         </a>
       </div>
