@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import priceConverter from '../../public/utilities'
-import Axios from 'axios'
+import {updateCartCandyThunk} from '../reducers/cart-reducer'
 
 class CartCandy extends React.Component {
   constructor() {
@@ -10,12 +10,15 @@ class CartCandy extends React.Component {
       quantity: ''
     }
   }
-  onSubmit = () => {
-    const {quantity} = this.state
-    Axios.post('/api/cart', {quantity, price})
+
+  onChange = event => {
     this.setState({
-      quantity: ''
+      [event.target.name]: event.target.value
     })
+  }
+
+  onSubmit = () => {
+    this.props.updateCart(1, this.props.selectedCandy.id, this.state.quantity)
   }
 
   render() {
@@ -31,7 +34,7 @@ class CartCandy extends React.Component {
           <label>Quantity: </label>
           <input
             type="text"
-            quantity="quantity"
+            name="quantity"
             value={this.state.quantity}
             onChange={event => this.onChange(event)}
           />
@@ -45,8 +48,11 @@ class CartCandy extends React.Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   getAllCandies: candyId => dispatch(getAllCandiesThunk(candyId))
-// })
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCart: (cartId, candyId, amount) =>
+      dispatch(updateCartCandyThunk(cartId, candyId, amount))
+  }
+}
 
-export default connect(null, null)(CartCandy)
+export default connect(null, mapDispatchToProps)(CartCandy)

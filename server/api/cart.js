@@ -25,4 +25,23 @@ router.delete('/:cartId', async (req, res, next) => {
   }
 })
 
+router.put('/:cartId/:candyId/:amount', async (req, res, next) => {
+  try {
+    let updatedCC = await CartCandy.update(
+      {
+        amount: req.params.amount
+      },
+      {
+        where: {
+          candyId: req.params.candyId,
+          cartId: req.params.cartId
+        }
+      }
+    )
+    res.json(updatedCC)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router
