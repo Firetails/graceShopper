@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getAllCandiesThunk} from '../reducers/candy-reducer'
+import priceConverter from '../../public/utilities'
 
 class Candy extends React.Component {
   handleDeletion(event, candyId) {
@@ -15,7 +16,7 @@ class Candy extends React.Component {
         </a>
         <img src={this.props.candy.imageUrl} />
         <p>{this.props.candy.description}</p>
-        <p>Price: {this.props.candy.price}</p>
+        <p>Price: ${priceConverter(this.props.candy.price)} /lb </p>
       </div>
     )
   }

@@ -7,6 +7,14 @@
   margin: 3px;
 }
 
+.cart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid black;
+  margin: 3px;
+}
+
 .nav-bar {
   position: relative;
   display: flex;
