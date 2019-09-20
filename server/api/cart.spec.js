@@ -24,7 +24,6 @@ describe('Cart routes', async () => {
       const res = await request(app)
         .get('/api/cart/1')
         .expect(200)
-      console.log(res.body)
       expect(res.body.id).to.be.equal(1)
     })
   }) //end describe GET route
