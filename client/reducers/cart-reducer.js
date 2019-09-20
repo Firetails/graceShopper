@@ -37,7 +37,7 @@ export const addCandyToCartThunk = (
 ) => async dispatch => {
   try {
     const {data} = await Axios.post(
-      `/api/${candyId}/${cartId}?amount=${amount}`
+      `/api/candies/${candyId}/${cartId}/${amount}`
     )
     dispatch(addedToCart(data))
   } catch (err) {

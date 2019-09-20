@@ -22,13 +22,13 @@ router.get('/:candyId', async (req, res, next) => {
     next(error)
   }
 })
-//HELEN: TEST THIS!!
-router.post('/:candyId/:cartId?amount=:amount', async (req, res, next) => {
+
+router.post('/:candyId/:cartId/:amount', async (req, res, next) => {
   try {
-    const selectedCandy = await Candy.findByPk(req.params.id)
+    const selectedCandy = await Candy.findByPk(req.params.candyId)
     const newCartCandy = await selectedCandy.addToCart(
       req.params.cartId,
-      req.query.amount
+      req.params.amount
     )
     res.json(newCartCandy)
   } catch (error) {

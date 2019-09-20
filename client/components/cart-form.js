@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getCartThunk} from '../reducers/cart-reducer'
-import Candy from './candy'
+import CartCandy from './cart-candy'
 
 const NoCandies = () => {
   return <p>There are no candies in the cart!</p>
@@ -21,8 +21,8 @@ class Cart extends React.Component {
           <NoCandies />
         ) : (
           <div>
-            {this.props.candies.map((candy, idx) => (
-              <Candy candy={candy} key={idx} />
+            {this.props.candies.map((cartcandy, idx) => (
+              <CartCandy cartcandy={cartcandy} key={idx} />
             ))}
           </div>
         )}
