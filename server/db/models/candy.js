@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const CartCandy = db.model('cartCandy')
+const CartCandy = require('../models/cartCandy')
 
 const Candy = db.define('candy', {
   name: {
