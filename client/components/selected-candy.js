@@ -40,11 +40,11 @@ class SelectedCandy extends React.Component {
         {!this.props.selectedCandy ? (
           <h1>Candy Not Found!!!</h1>
         ) : (
-          <div>
+          <div className="item-container">
             <h1>{selectedCandy.name}</h1>
             <img src={selectedCandy.imageUrl} />
-            <p>{selectedCandy.description}</p>
-            <p>{selectedCandy.ingredients}</p>
+            <p>Description: {selectedCandy.description}</p>
+            <p>Ingredients: {selectedCandy.ingredients}</p>
             <h6>Price: ${priceConverter(selectedCandy.price)} /lb </h6>
             <form onSubmit={this.onSubmit}>
               <label>Quantity: </label>
@@ -55,7 +55,9 @@ class SelectedCandy extends React.Component {
                 onChange={event => this.onChange(event)}
               />
               <br />
-              <button type="submit">Order</button>
+              <button className="submit-button" type="submit">
+                Order
+              </button>
             </form>
           </div>
         )}

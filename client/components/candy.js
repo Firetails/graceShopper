@@ -11,13 +11,11 @@ class Candy extends React.Component {
     return (
       <div className="item-container">
         <a href={`/candies/${this.props.candy.id}`}>
-          <div className="sub-container-header">
-            <h1>{this.props.candy.name}</h1>
-            <img src={this.props.candy.imageUrl} />
-            <p>{this.props.candy.description}</p>
-            <p>Price: {this.props.candy.price}</p>
-          </div>
+          <h1>{this.props.candy.name}</h1>{' '}
         </a>
+        <img src={this.props.candy.imageUrl} />
+        <p>{this.props.candy.description}</p>
+        <p>Price: {this.props.candy.price}</p>
       </div>
     )
   }
