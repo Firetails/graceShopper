@@ -1,5 +1,4 @@
 const {green, red} = require('chalk')
-const Candies = require('../server/db/models/candy')
 const db = require('../server/db')
 const {User, Candy, Cart, CartCandy} = require('../server/db/models')
 
@@ -59,7 +58,7 @@ async function seed() {
 
   await Promise.all(
     candies.map(candy => {
-      return Candies.create(candy)
+      return Candy.create(candy)
     })
   )
 
