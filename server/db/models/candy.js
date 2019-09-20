@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const CartCandy = require('./cartCandy')
+const CartCandy = require('../models/cartCandy')
 
 const Candy = db.define('candy', {
   name: {
@@ -28,7 +28,10 @@ const Candy = db.define('candy', {
     }
   },
   price: {
-    type: Sequelize.DECIMAL
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0
+    }
   }
 })
 
