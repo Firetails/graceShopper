@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize')
+const db = require('../db')
 const User = require('./user')
 const Cart = require('./cart')
-const CartCandies = require('./cartCandy')
 const Candy = require('./candy')
+const CartCandies = require('./cartCandy')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
