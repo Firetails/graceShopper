@@ -15,3 +15,14 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/signup', (req, res, next) => {
+  try {
+    User.create({
+      email: req.body.email,
+      password: req.body.password
+    })
+  } catch (error) {
+    next(error)
+  }
+})
