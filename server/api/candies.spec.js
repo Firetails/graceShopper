@@ -56,7 +56,7 @@ describe('Candies routes', () => {
   })
 
   describe('POST', () => {
-    it('POST created a new instance of Cart Candy ( the joint table)', async () => {
+    xit('POST created a new instance of Cart Candy ( the joint table)', async () => {
       let newCandy = await Candy.create({
         name: 'someJCandy',
         imageUrl:
