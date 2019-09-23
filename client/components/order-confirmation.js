@@ -3,8 +3,11 @@ import Candy from './candy'
 import {orderNumberGenerator} from '../../public/utilities'
 
 class OrderConfirmation extends React.Component {
+  constructor() {
+    super()
+  }
+
   render() {
-    console.log('Here!!!!', orderNumberGenerator)
     return (
       <div className="all-containers">
         <h1>Thank you for your order!</h1>

@@ -3,6 +3,6 @@ export const priceConverter = priceInPennies => {
 }
 
 const max = 99999999
-export const orderNumberGenerator = max => {
+export const orderNumberGenerator = () => {
   return Math.floor(Math.random() * Math.floor(max))
 }
