@@ -42,15 +42,19 @@ passport.deserializeUser(async (id, done) => {
 })
 //HELEN ADDED THIS!
 passport.use(
-  new Strategy(async function(username, password, cb) {
-    const user = await db.User.findOne({where: {email: username}})
-    if (!user) {
-      console.log('No such user found:', username)
-      return cb(null, false)
-    } else if (!user.correctPassword(password)) {
-      console.log('Incorrect password for user:', username)
-      return cb(null, false)
-    }
+  new Strategy(function(username, password, done) {
+    db.User.findOne({username: username}, function(err, user) {
+      if (err) {
+        return done(err)
+      }
+      if (!user) {
+        return done(null, false)
+      }
+      if (!user.correctPassword(password)) {
+        return done(null, false)
+      }
+      return done(null, user)
+    })
   })
 )
 
