@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk} from '../reducers/cart-reducer'
+import {getCartThunk, clearCartCandyThunk} from '../reducers/cart-reducer'
 import CartCandy from './cart-candy'
 import {calculateTotal} from '../../public/utilities'
 const NoCandies = () => {
@@ -14,6 +14,7 @@ class Cart extends React.Component {
   onSubmit = event => {
     event.preventDefault()
     this.props.history.push('/orderConfirmation')
+    this.props.clearCart()
   }
 
   render() {
@@ -45,7 +46,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getCart: () => dispatch(getCartThunk(1))
+  getCart: () => dispatch(getCartThunk(1)),
+  clearCart: () => dispatch(clearCartCandyThunk())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

@@ -44,8 +44,10 @@ class SelectedCandy extends React.Component {
             <form onSubmit={this.onSubmit}>
               <label>Quantity: </label>
               <input
-                type="text"
+                type="number"
                 name="quantity"
+                min="0"
+                max="9999"
                 value={this.state.quantity}
                 onChange={event => this.onChange(event)}
               />
