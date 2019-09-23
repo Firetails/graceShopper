@@ -59,15 +59,15 @@ const createApp = () => {
       store: sessionStore,
       resave: false,
       saveUninitialized: false,
-      cookie: {test: 'test'}
+      cookie: {cart: []}
     })
   )
   app.use(passport.initialize())
   app.use(passport.session())
 
-  //testing out the sessions
+  //Helen: testing out the sessions
   app.use((req, res, next) => {
-    console.log(req.session)
+    // console.log(req.session)
     // increment THEN log
     next() // needed to continue through express middleware
   })
