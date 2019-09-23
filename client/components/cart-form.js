@@ -27,6 +27,7 @@ class Cart extends React.Component {
             {this.props.candies.map((cartcandy, idx) => (
               <CartCandy cartcandy={cartcandy} key={idx} />
             ))}
+            <p>Total: ${calculateTotal(this.props.candies)}</p>
             <form onSubmit={this.onSubmit}>
               <button className="submit-button" type="submit">
                 Checkout
