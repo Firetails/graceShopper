@@ -22,7 +22,6 @@ class CartCandy extends React.Component {
 
   onSubmit = event => {
     event.preventDefault()
-    console.log('On Submit. Target', this.props.cartcandy.cartCandy)
     this.props.updateCart(
       this.props.cartcandy.cartCandy.cartId,
       this.props.cartcandy.cartCandy.candyId,
@@ -31,7 +30,6 @@ class CartCandy extends React.Component {
   }
 
   render() {
-    console.log('In cart-candy component', this.props.cartcandy.cartCandy)
     return (
       <div className="cart-container">
         <div className="cart-subcontainer-left">
