@@ -36,7 +36,9 @@ router.put('/:cartId/:candyId/:amount', async (req, res, next) => {
         where: {
           candyId: req.params.candyId,
           cartId: req.params.cartId
-        }
+        },
+        returning: true,
+        plain: true
       }
     )
     res.json(updatedCC)

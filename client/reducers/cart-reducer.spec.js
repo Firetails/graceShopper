@@ -32,44 +32,21 @@ describe('Thunks', () => {
       imageUrl:
         'http://cdn.shopify.com/s/files/1/0768/4331/products/UHA-Puchao-Fruit-Mix-4-Flavor-wm-800x72_1024x1024.jpg?v=1502413813'
     }
-    beforeEach(() => {
-      mockAxios.onGet('/api/cart/1/1/10').reply(200, [candyOne, candyTwo])
-    })
-
-    it('sets the received candies on state', async () => {
-      await store.dispatch(getAllCandiesThunk())
-      const state = store.getState()
-      expect(state.candies).to.deep.equal([candyOne, candyTwo])
-    })
-  })
-
-  describe('GET /candies fails', () => {
-    beforeEach(() => {
-      mockAxios.onGet('/api/candies').reply(404, 'No candies today!')
-    })
-
-    it('sets the thrown error on state', async () => {
-      await store.dispatch(getAllCandiesThunk())
-      const state = store.getState()
-      console.log('Current state: ', state)
-      expect(state.candies).to.deep.equal([])
-    })
-  })
-
-  describe('GET /candies/candyId succeeds', () => {
-    let candyOne = {
-      name: 'someJCandy',
-      imageUrl:
-        'http://cdn.shopify.com/s/files/1/0768/4331/products/UHA-Puchao-Fruit-Mix-4-Flavor-wm-800x72_1024x1024.jpg?v=1502413813'
+    let cartCandy = {
+      cartId: 1,
+      candyId: 1,
+      amount: 10
     }
+
     beforeEach(() => {
-      mockAxios.onGet('/api/candies/1').reply(200, [candyOne])
+      mockAxios.onGet('/api/cart/1/1/10').reply(200, cartCandy)
     })
 
     it('sets the received candies on state', async () => {
-      await store.dispatch(getSelectedCandyThunk(1))
+      await store.dispatch(updateCartCandyThunk(1, 1, 10))
       const state = store.getState()
-      expect(state.selectedCandy).to.deep.equal([candyOne])
+      console.log('UPDATE PRODUCTS IN CART: ', state.productsInCart)
+      expect(state.productsInCart).to.deep.equal([cartCandy])
     })
   })
 })

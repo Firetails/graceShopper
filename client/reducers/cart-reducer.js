@@ -45,6 +45,7 @@ export const addCandyToCartThunk = (
     const {data} = await Axios.post(
       `/api/candies/${candyId}/${cartId}/${amount}`
     )
+    console.log('AXIOS return from POST - Add new cart candy ', data) //--->>> ???? [1] index
     dispatch(addedToCart(data))
   } catch (err) {
     console.error(err)
@@ -58,7 +59,8 @@ export const updateCartCandyThunk = (
 ) => async dispatch => {
   try {
     const {data} = await Axios.put(`/api/cart/${cartId}/${candyId}/${amount}`)
-    dispatch(updateCartCandy(data))
+    console.log('AXIOS return from PUT ', data[1]) //--->>> ???? [1] index
+    dispatch(updateCartCandy(data[1]))
   } catch (err) {
     console.error(err)
   }
@@ -80,10 +82,11 @@ const cartReducer = (state = initialState, action) => {
       }
     case UPDATE_CARTCANDY: {
       console.log('Store - Before Update Products ', state.productsInCart)
+      console.log('Store - Before Update Cart Candy ', action.cartCandy)
 
       let updatedProducts = [
         ...state.productsInCart.filter(
-          el => el.candyId !== action.cartCandy.candyId
+          el => el.id !== action.cartCandy.candyId
         ),
         action.cartCandy
       ]
