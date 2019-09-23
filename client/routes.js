@@ -8,10 +8,12 @@ import {
   UserHome,
   Candies,
   SelectedCandy,
-  Cart
+  Cart,
+  OrderConfirmation
 } from './components'
 
 import {me} from './store'
+
 /**
  * COMPONENT
  */
@@ -31,6 +33,7 @@ class Routes extends Component {
         <Route path="/candies/:id" component={SelectedCandy} />
         <Route path="/candies" component={Candies} />
         <Route path="/cart" component={Cart} />
+        <Route path="/orderConfirmation" component={OrderConfirmation} />
 
         {isLoggedIn && (
           <Switch>
