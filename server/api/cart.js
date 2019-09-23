@@ -25,4 +25,26 @@ router.delete('/:cartId', async (req, res, next) => {
   }
 })
 
+router.put('/:cartId/:candyId/:amount', async (req, res, next) => {
+  try {
+    console.log('In PUT: ', req.params)
+    let updatedCC = await CartCandy.update(
+      {
+        amount: req.params.amount
+      },
+      {
+        where: {
+          candyId: req.params.candyId,
+          cartId: req.params.cartId
+        },
+        returning: true,
+        plain: true
+      }
+    )
+    res.json(updatedCC)
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

@@ -8,6 +8,7 @@ const initialState = {
 //action types
 const GOT_CART = 'GOT_CART'
 const ADD_TO_CART = 'ADD_TO_CART'
+const UPDATE_CARTCANDY = 'UPDATE_CARTCANDY'
 
 //action creators
 const gotCart = cart => ({
@@ -17,6 +18,11 @@ const gotCart = cart => ({
 
 const addedToCart = cartCandy => ({
   type: ADD_TO_CART,
+  cartCandy
+})
+
+const updateCartCandy = cartCandy => ({
+  type: UPDATE_CARTCANDY,
   cartCandy
 })
 
@@ -39,7 +45,22 @@ export const addCandyToCartThunk = (
     const {data} = await Axios.post(
       `/api/candies/${candyId}/${cartId}/${amount}`
     )
+    console.log('AXIOS return from POST - Add new cart candy ', data) //--->>> ???? [1] index
     dispatch(addedToCart(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const updateCartCandyThunk = (
+  cartId,
+  candyId,
+  amount
+) => async dispatch => {
+  try {
+    const {data} = await Axios.put(`/api/cart/${cartId}/${candyId}/${amount}`)
+    console.log('AXIOS return from PUT ', data[1]) //--->>> ???? [1] index
+    dispatch(updateCartCandy(data[1]))
   } catch (err) {
     console.error(err)
   }
@@ -59,6 +80,23 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         productsInCart: [...state.productsInCart, action.cartCandy]
       }
+    case UPDATE_CARTCANDY: {
+      console.log('Store - Before Update Products ', state.productsInCart)
+      console.log('Store - Before Update Cart Candy ', action.cartCandy)
+
+      let updatedProducts = [
+        ...state.productsInCart.filter(
+          el => el.id !== action.cartCandy.candyId
+        ),
+        action.cartCandy
+      ]
+
+      console.log('Store - Updated Products ', updatedProducts)
+      return {
+        ...state,
+        productsInCart: updateCartCandy
+      }
+    }
     default:
       return state
   }
