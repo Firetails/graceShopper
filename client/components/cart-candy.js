@@ -1,52 +1,72 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import priceConverter from '../../public/utilities'
-import Axios from 'axios'
+import {priceConverter} from '../../public/utilities'
+import {updateCartCandyThunk} from '../store/cart-reducer'
 
 class CartCandy extends React.Component {
   constructor() {
     super()
     this.state = {
-      quantity: ''
+      quantity: 0
     }
   }
-  onSubmit = () => {
-    const {quantity} = this.state
-    Axios.post('/api/cart', {quantity, price})
+  componentDidMount() {
+    this.setState({quantity: this.props.cartcandy.cartCandy.amount})
+  }
+
+  onChange = event => {
     this.setState({
-      quantity: ''
+      [event.target.name]: event.target.value
     })
   }
 
+  onSubmit = event => {
+    event.preventDefault()
+    this.props.updateCart(
+      this.props.cartcandy.cartCandy.cartId,
+      this.props.cartcandy.cartCandy.candyId,
+      this.state.quantity
+    )
+  }
+
   render() {
-    console.log('In cart-candy component', this.props.cartcandy.cartCandy)
     return (
       <div className="cart-container">
-        {/* <a href={`/candies/${this.props.candy.candyId}`}> */}
-        <h3>{this.props.cartcandy.name}</h3> {/* </a> */}
-        <img src={this.props.cartcandy.imageUrl} />
-        <p>{this.props.cartcandy.cartCandy.amount}</p>
-        <p>Price: ${priceConverter(this.props.cartcandy.price)} /lb </p>
-        <form onSubmit={this.onSubmit}>
-          <label>Quantity: </label>
-          <input
-            type="text"
-            quantity="quantity"
-            value={this.state.quantity}
-            onChange={event => this.onChange(event)}
-          />
-          <br />
-          <button className="submit-button" type="submit">
-            Update Quantity
-          </button>
-        </form>
+        <div className="cart-subcontainer-left">
+          <h3>{this.props.cartcandy.name}</h3>
+          <img src={this.props.cartcandy.imageUrl} />
+        </div>
+        <div className="cart-subcontainer-right">
+          <form onSubmit={this.onSubmit}>
+            <label>Quantity: </label>
+            <input
+              type="text"
+              name="quantity"
+              value={this.state.quantity}
+              onChange={event => this.onChange(event)}
+            />
+            <br />
+            <button className="submit-button" type="submit">
+              Update Quantity
+            </button>
+          </form>
+          <p>
+            Price: ${priceConverter(
+              this.props.cartcandy.price * this.state.quantity
+            )}{' '}
+            /lb{' '}
+          </p>
+        </div>
       </div>
     )
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   getAllCandies: candyId => dispatch(getAllCandiesThunk(candyId))
-// })
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCart: (cartId, candyId, amount) =>
+      dispatch(updateCartCandyThunk(cartId, candyId, amount))
+  }
+}
 
-export default connect(null, null)(CartCandy)
+export default connect(null, mapDispatchToProps)(CartCandy)

@@ -54,23 +54,14 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      key: 'user_sid',
       secret: process.env.SESSION_SECRET || 'my best friend is Cody',
       store: sessionStore,
       resave: false,
-      saveUninitialized: false,
-      cookie: {cart: []}
+      saveUninitialized: false
     })
   )
   app.use(passport.initialize())
   app.use(passport.session())
-
-  //Helen: testing out the sessions
-  app.use((req, res, next) => {
-    // console.log(req.session)
-    // increment THEN log
-    next() // needed to continue through express middleware
-  })
 
   // auth and api routes
   app.use('/auth', require('./auth'))

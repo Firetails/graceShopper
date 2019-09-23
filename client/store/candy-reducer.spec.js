@@ -54,7 +54,6 @@ describe('Thunks', () => {
     it('sets the thrown error on state', async () => {
       await store.dispatch(getAllCandiesThunk())
       const state = store.getState()
-      console.log('Current state: ', state)
       expect(state.candies).to.deep.equal([])
     })
   })

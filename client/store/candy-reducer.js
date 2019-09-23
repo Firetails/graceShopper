@@ -2,7 +2,6 @@ import Axios from 'axios'
 
 const initialState = {
   candies: [],
-  candiesError: '',
   selectedCandy: null
 }
 

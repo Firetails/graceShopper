@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getAllCandiesThunk} from '../reducers/candy-reducer'
+import {getAllCandiesThunk} from '../store/candy-reducer'
 import Candy from './candy'
 
 const NoCandies = () => {

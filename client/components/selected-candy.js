@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getSelectedCandyThunk} from '../reducers/candy-reducer'
-import {addCandyToCartThunk} from '../reducers/cart-reducer'
+import {getSelectedCandyThunk} from '../store/candy-reducer'
+import {addCandyToCartThunk} from '../store/cart-reducer'
 
-import priceConverter from '../../public/utilities'
+import {priceConverter} from '../../public/utilities'
 
-export class SelectedCandy extends React.Component {
+class SelectedCandy extends React.Component {
   constructor() {
     super()
     this.state = {
