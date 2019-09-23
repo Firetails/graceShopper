@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {getSelectedCandyThunk} from '../reducers/candy-reducer'
 import {addCandyToCartThunk} from '../reducers/cart-reducer'
 
-import priceConverter from '../../public/utilities'
+import {priceConverter} from '../../public/utilities'
 
 class SelectedCandy extends React.Component {
   constructor() {

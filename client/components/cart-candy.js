@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import priceConverter from '../../public/utilities'
+import {priceConverter} from '../../public/utilities'
 import {updateCartCandyThunk} from '../reducers/cart-reducer'
 
 class CartCandy extends React.Component {
@@ -34,25 +34,31 @@ class CartCandy extends React.Component {
     console.log('In cart-candy component', this.props.cartcandy.cartCandy)
     return (
       <div className="cart-container">
-        {/* <a href={`/candies/${this.props.candy.candyId}`}> */}
-        <h3>{this.props.cartcandy.name}</h3> {/* </a> */}
-        <img src={this.props.cartcandy.imageUrl} />
-        <p>{this.props.cartcandy.cartCandy.amount}</p>
-        <p>Price: ${priceConverter(this.props.cartcandy.price)} /lb </p>
-        {/* <form onSubmit={(event, cartCandy) => this.onSubmit(event, this.props.cartCandy.cartCandy )}> */}
-        <form onSubmit={this.onSubmit}>
-          <label>Quantity: </label>
-          <input
-            type="text"
-            name="quantity"
-            value={this.state.quantity}
-            onChange={event => this.onChange(event)}
-          />
-          <br />
-          <button className="submit-button" type="submit">
-            Update Quantity
-          </button>
-        </form>
+        <div className="cart-subcontainer-left">
+          <h3>{this.props.cartcandy.name}</h3>
+          <img src={this.props.cartcandy.imageUrl} />
+        </div>
+        <div className="cart-subcontainer-right">
+          <form onSubmit={this.onSubmit}>
+            <label>Quantity: </label>
+            <input
+              type="text"
+              name="quantity"
+              value={this.state.quantity}
+              onChange={event => this.onChange(event)}
+            />
+            <br />
+            <button className="submit-button" type="submit">
+              Update Quantity
+            </button>
+          </form>
+          <p>
+            Price: ${priceConverter(
+              this.props.cartcandy.price * this.state.quantity
+            )}{' '}
+            /lb{' '}
+          </p>
+        </div>
       </div>
     )
   }

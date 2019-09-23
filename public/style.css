@@ -9,10 +9,19 @@
 
 .cart-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   border: 1px solid black;
   margin: 3px;
+}
+
+.cart-subcontainer-left {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cart-subcontainer-right {
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .nav-bar {

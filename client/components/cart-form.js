@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getCartThunk} from '../reducers/cart-reducer'
 import CartCandy from './cart-candy'
-
+import {calculateTotal} from '../../public/utilities'
 const NoCandies = () => {
   return <p>There are no candies in the cart!</p>
 }
@@ -24,6 +24,7 @@ class Cart extends React.Component {
             {this.props.candies.map((cartcandy, idx) => (
               <CartCandy cartcandy={cartcandy} key={idx} />
             ))}
+            <p>Subtotal: ${calculateTotal(this.props.candies)}</p>
           </div>
         )}
       </div>

@@ -322,7 +322,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_candy_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/candy-reducer */ "./client/reducers/candy-reducer.js");
 /* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../public/utilities */ "./public/utilities.js");
-/* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_utilities__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -372,7 +371,7 @@ function (_React$Component) {
         href: "/candies/".concat(this.props.candy.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.candy.name), ' '), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.props.candy.imageUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.candy.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price: $", _public_utilities__WEBPACK_IMPORTED_MODULE_3___default()(this.props.candy.price), " /lb "));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.candy.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price: $", Object(_public_utilities__WEBPACK_IMPORTED_MODULE_3__["priceConverter"])(this.props.candy.price), " /lb "));
     }
   }]);
 
@@ -404,7 +403,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../public/utilities */ "./public/utilities.js");
-/* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_public_utilities__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _reducers_cart_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/cart-reducer */ "./client/reducers/cart-reducer.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -475,9 +473,13 @@ function (_React$Component) {
       console.log('In cart-candy component', this.props.cartcandy.cartCandy);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cart-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.cartcandy.name), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-subcontainer-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.cartcandy.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.props.cartcandy.imageUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.cartcandy.cartCandy.amount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price: $", _public_utilities__WEBPACK_IMPORTED_MODULE_2___default()(this.props.cartcandy.price), " /lb "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cart-subcontainer-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.onSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Quantity: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -489,7 +491,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "submit-button",
         type: "submit"
-      }, "Update Quantity")));
+      }, "Update Quantity")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Price: $", Object(_public_utilities__WEBPACK_IMPORTED_MODULE_2__["priceConverter"])(this.props.cartcandy.price * this.state.quantity), " /lb ")));
     }
   }]);
 
@@ -522,6 +524,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reducers_cart_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/cart-reducer */ "./client/reducers/cart-reducer.js");
 /* harmony import */ var _cart_candy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart-candy */ "./client/components/cart-candy.js");
+/* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/utilities */ "./public/utilities.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -539,6 +542,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -576,7 +580,7 @@ function (_React$Component) {
           cartcandy: cartcandy,
           key: idx
         });
-      })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Subtotal: $", Object(_public_utilities__WEBPACK_IMPORTED_MODULE_4__["calculateTotal"])(this.props.candies))));
     }
   }]);
 
@@ -739,7 +743,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers_candy_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/candy-reducer */ "./client/reducers/candy-reducer.js");
 /* harmony import */ var _reducers_cart_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../reducers/cart-reducer */ "./client/reducers/cart-reducer.js");
 /* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../public/utilities */ "./public/utilities.js");
-/* harmony import */ var _public_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_public_utilities__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -808,7 +811,7 @@ function (_React$Component) {
         className: "item-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, selectedCandy.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: selectedCandy.imageUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description: ", selectedCandy.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ingredients: ", selectedCandy.ingredients), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Price: $", _public_utilities__WEBPACK_IMPORTED_MODULE_4___default()(selectedCandy.price), " /lb "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description: ", selectedCandy.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ingredients: ", selectedCandy.ingredients), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Price: $", Object(_public_utilities__WEBPACK_IMPORTED_MODULE_4__["priceConverter"])(selectedCandy.price), " /lb "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.onSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Quantity: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -1236,7 +1239,7 @@ var addCandyToCartThunk = function addCandyToCartThunk(cartId, candyId, amount) 
               case 3:
                 _ref4 = _context2.sent;
                 data = _ref4.data;
-                console.log("AXIOS return from POST - Add new cart candy ", data); //--->>> ???? [1] index
+                console.log('AXIOS return from POST - Add new cart candy ', data); //--->>> ???? [1] index
 
                 dispatch(addedToCart(data));
                 _context2.next = 12;
@@ -1281,7 +1284,7 @@ var updateCartCandyThunk = function updateCartCandyThunk(cartId, candyId, amount
               case 3:
                 _ref6 = _context3.sent;
                 data = _ref6.data;
-                console.log("AXIOS return from PUT ", data[1]); //--->>> ???? [1] index
+                console.log('AXIOS return from PUT ', data[1]); //--->>> ???? [1] index
 
                 dispatch(updateCartCandy(data[1]));
                 _context3.next = 12;
@@ -53677,14 +53680,26 @@ module.exports = yeast;
 /*!*****************************!*\
   !*** ./public/utilities.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: priceConverter, calculateTotal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "priceConverter", function() { return priceConverter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "calculateTotal", function() { return calculateTotal; });
 var priceConverter = function priceConverter(priceInPennies) {
   return priceInPennies / 100;
 };
+var calculateTotal = function calculateTotal(products) {
+  var total = 0;
 
-module.exports = priceConverter;
+  for (var i = 0; i < products.length; i++) {
+    // console.log("product price:" ,proprice);
+    total += priceConverter(products[i].price) * products[i].cartCandy.amount;
+  }
+
+  return total;
+};
 
 /***/ }),
 
