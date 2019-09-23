@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
+const Strategy = require('passport-http').BasicStrategy
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
@@ -39,6 +40,19 @@ passport.deserializeUser(async (id, done) => {
     done(err)
   }
 })
+//HELEN ADDED THIS!
+passport.use(
+  new Strategy(async function(username, password, cb) {
+    const user = await db.User.findOne({where: {email: username}})
+    if (!user) {
+      console.log('No such user found:', username)
+      return cb(null, false)
+    } else if (!user.correctPassword(password)) {
+      console.log('Incorrect password for user:', username)
+      return cb(null, false)
+    }
+  })
+)
 
 const createApp = () => {
   // logging middleware
