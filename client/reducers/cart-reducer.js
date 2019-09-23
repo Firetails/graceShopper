@@ -78,16 +78,22 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         productsInCart: [...state.productsInCart, action.cartCandy]
       }
-    case UPDATE_CARTCANDY:
+    case UPDATE_CARTCANDY: {
+      console.log('Store - Before Update Products ', state.productsInCart)
+
+      let updatedProducts = [
+        ...state.productsInCart.filter(
+          el => el.candyId !== action.cartCandy.candyId
+        ),
+        action.cartCandy
+      ]
+
+      console.log('Store - Updated Products ', updatedProducts)
       return {
         ...state,
-        productsInCart: [
-          ...state.productsInCart.filter(
-            el => el.candyId !== action.cartCandy.candyId
-          ),
-          action.cartCandy
-        ]
+        productsInCart: updateCartCandy
       }
+    }
     default:
       return state
   }

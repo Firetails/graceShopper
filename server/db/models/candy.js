@@ -21,6 +21,7 @@ const Candy = db.define('candy', {
   ingredients: {
     type: Sequelize.TEXT
   },
+  //available quantity in stock
   quantity: {
     type: Sequelize.INTEGER,
     validate: {
