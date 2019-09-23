@@ -18,7 +18,12 @@ class CartCandy extends React.Component {
   }
 
   onSubmit = () => {
-    this.props.updateCart(1, this.props.selectedCandy.id, this.state.quantity)
+    console.log('On Submit', this.props)
+    this.props.updateCart(
+      1,
+      this.props.cartCandy.cartCandy.id,
+      this.state.quantity
+    )
   }
 
   render() {
@@ -30,7 +35,7 @@ class CartCandy extends React.Component {
         <img src={this.props.cartcandy.imageUrl} />
         <p>{this.props.cartcandy.cartCandy.amount}</p>
         <p>Price: ${priceConverter(this.props.cartcandy.price)} /lb </p>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit()}>
           <label>Quantity: </label>
           <input
             type="text"
