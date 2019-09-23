@@ -5,7 +5,7 @@ import {addCandyToCartThunk} from '../reducers/cart-reducer'
 
 import {priceConverter} from '../../public/utilities'
 
-class SelectedCandy extends React.Component {
+export class SelectedCandy extends React.Component {
   constructor() {
     super()
     this.state = {
