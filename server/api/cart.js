@@ -27,7 +27,6 @@ router.delete('/:cartId', async (req, res, next) => {
 
 router.put('/:cartId/:candyId/:amount', async (req, res, next) => {
   try {
-    console.log('In PUT: ', req.params)
     let updatedCC = await CartCandy.update(
       {
         amount: req.params.amount
