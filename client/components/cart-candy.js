@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {priceConverter} from '../../public/utilities'
-import {updateCartCandyThunk} from '../reducers/cart-reducer'
+import {updateCartCandyThunk} from '../store/cart-reducer'
 
 class CartCandy extends React.Component {
   constructor() {

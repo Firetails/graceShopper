@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk} from '../reducers/cart-reducer'
+import {getCartThunk} from '../store/cart-reducer'
 import CartCandy from './cart-candy'
 import {calculateTotal} from '../../public/utilities'
 const NoCandies = () => {
