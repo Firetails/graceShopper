@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Cart, CartCandy, Candy} = require('../db/models')
+const {isAdmin} = require('./security')
 
 router.get('/:cartId', async (req, res, next) => {
   try {
@@ -12,7 +13,7 @@ router.get('/:cartId', async (req, res, next) => {
   }
 })
 
-router.delete('/:cartId', async (req, res, next) => {
+router.delete('/:cartId', isAdmin, async (req, res, next) => {
   try {
     await Cart.destroy({
       where: {
