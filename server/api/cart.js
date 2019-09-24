@@ -11,6 +11,18 @@ router.get('/', (req, res, next) => {
   }
 })
 
+router.post('/:candyId/:amount', async (req, res, next) => {
+  try {
+    const candy = await Candy.findbyPk(req.params.candyId)
+    const newCartItem = {Candy: candy, amount: req.params.amount}
+    req.session.cart.push(newCartItem)
+    res.send(newCartItem)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/')
 //NOTE: KEEP THIS LOGIC FOR WHEN WE NEED TO REQUEST A SUBMITTED ORDER FROM THE DATABASE
 // router.get('/:cartId', async (req, res, next) => {
 //   try {
