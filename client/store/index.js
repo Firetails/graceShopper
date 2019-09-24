@@ -3,8 +3,8 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
-import candy from '../reducers/candy-reducer'
-import cart from '../reducers/cart-reducer'
+import candy from './candy-reducer'
+import cart from './cart-reducer'
 
 const reducer = combineReducers({user, candy, cart})
 const middleware = composeWithDevTools(
