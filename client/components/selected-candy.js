@@ -9,7 +9,7 @@ class SelectedCandy extends React.Component {
   constructor() {
     super()
     this.state = {
-      quantity: ''
+      quantity: 0
     }
   }
 
@@ -19,8 +19,13 @@ class SelectedCandy extends React.Component {
     })
   }
 
-  onSubmit = () => {
-    this.props.addToCart(1, this.props.selectedCandy.id, this.state.quantity)
+  onSubmit = event => {
+    event.preventDefault()
+    this.props.addToCart(
+      this.props.cartId,
+      this.props.selectedCandy.id,
+      this.state.quantity
+    )
   }
 
   componentDidMount() {
