@@ -1,17 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {priceConverter} from '../../public/utilities'
-import {updateCartCandyThunk} from '../reducers/cart-reducer'
+import {updateCartCandyThunk} from '../store/cart-reducer'
 
 class CartCandy extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       quantity: 0
     }
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
   componentDidMount() {
-    this.setState({quantity: this.props.cartcandy.cartCandy.amount})
+    this.setState({quantity: this.props.candy.cartCandy.amount})
   }
 
   onChange = event => {
@@ -37,8 +39,8 @@ class CartCandy extends React.Component {
     return (
       <div className="cart-container">
         <div className="cart-subcontainer-left">
-          <h3>{this.props.cartcandy.name}</h3>
-          <img src={this.props.cartcandy.imageUrl} />
+          <h3>{this.props.candy.name}</h3>
+          <img src={this.props.candy.imageUrl} />
         </div>
         <div className="cart-subcontainer-right">
           <form onSubmit={this.onUpdateSubmit}>
@@ -63,7 +65,7 @@ class CartCandy extends React.Component {
           </form> */}
           <p>
             Price: ${priceConverter(
-              this.props.cartcandy.price * this.state.quantity
+              this.props.candy.price * this.state.quantity
             )}{' '}
             /lb{' '}
           </p>
