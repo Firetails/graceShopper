@@ -24,12 +24,9 @@ class CartCandy extends React.Component {
 
   onUpdateSubmit = event => {
     event.preventDefault()
+    console.log('UPDATE SUBMIT: ', this.state.quantity)
     this.props.updateCart(this.props.product.candy.id, this.state.quantity)
   }
-
-  // onDeleteSubmit = event => {
-
-  // }
 
   render() {
     return (

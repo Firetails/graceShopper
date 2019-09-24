@@ -5,9 +5,9 @@ export const priceConverter = priceInPennies => {
 export const calculateTotal = products => {
   let total = 0
   for (let i = 0; i < products.length; i++) {
-    total += priceConverter(products[i].candy.price) * products[i].amount
+    total += products[i].candy.price * products[i].amount
   }
-  return total
+  return priceConverter(total)
 }
 
 const max = 99999999
