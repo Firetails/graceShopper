@@ -13,10 +13,20 @@ router.get('/', (req, res, next) => {
 
 router.post('/:candyId/:amount', async (req, res, next) => {
   try {
-    const candy = await Candy.findbyPk(req.params.candyId)
-    const newCartItem = {candy: candy, amount: req.params.amount}
-    const newCart = req.session.cart.push(newCartItem)
-    res.send(newCart)
+    console.log('POST!!!!', req.params)
+    const candy = await Candy.findByPk(req.params.candyId)
+    let found = false
+    for (let i = 0; i < req.session.cart; i++) {
+      if (req.session.cart[i].candy.id === candy.id) {
+        req.session.cart[i].amount = req.params.amount
+        found = true
+      }
+    }
+    if (!found) {
+      const newCartItem = {candy: candy, amount: req.params.amount}
+      req.session.cart.push(newCartItem)
+    }
+    res.json(req.session.cart)
   } catch (error) {
     next(error)
   }
@@ -31,7 +41,7 @@ router.put('/:candyId/:amount', (req, res, next) => {
       }
     })
     req.session.cart = newCart
-    res.send(newCart)
+    res.json(newCart)
   } catch (error) {
     next(error)
   }
@@ -42,7 +52,7 @@ router.delete('/:candyId', (req, res, next) => {
     const cart = req.session.cart
     const newCart = cart.filter(el => el.candy.id !== req.params.id)
     req.session.cart = newCart
-    res.send(newCart)
+    res.json(newCart)
   } catch (error) {
     next(error)
   }

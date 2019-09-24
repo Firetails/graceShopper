@@ -13,7 +13,7 @@ class CartCandy extends React.Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
   componentDidMount() {
-    this.setState({quantity: this.props.candy.cartCandy.amount})
+    this.setState({quantity: this.props.product.amount})
   }
 
   onChange = event => {
@@ -24,19 +24,15 @@ class CartCandy extends React.Component {
 
   onSubmit = event => {
     event.preventDefault()
-    this.props.updateCart(
-      this.props.cartcandy.cartCandy.cartId,
-      this.props.cartcandy.cartCandy.candyId,
-      this.state.quantity
-    )
+    this.props.updateCart(this.props.product.candy.id, this.state.quantity)
   }
 
   render() {
     return (
       <div className="cart-container">
         <div className="cart-subcontainer-left">
-          <h3>{this.props.candy.name}</h3>
-          <img src={this.props.candy.imageUrl} />
+          <h3>{this.props.product.candy.name}</h3>
+          <img src={this.props.product.candy.imageUrl} />
         </div>
         <div className="cart-subcontainer-right">
           <form onSubmit={this.onSubmit}>
@@ -54,7 +50,7 @@ class CartCandy extends React.Component {
           </form>
           <p>
             Price: ${priceConverter(
-              this.props.candy.price * this.state.quantity
+              this.props.product.candy.price * this.state.quantity
             )}{' '}
             /lb{' '}
           </p>
@@ -66,8 +62,8 @@ class CartCandy extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateCart: (cartId, candyId, amount) =>
-      dispatch(updateCartCandyThunk(cartId, candyId, amount))
+    updateCart: (candyId, amount) =>
+      dispatch(updateCartCandyThunk(candyId, amount))
   }
 }
 

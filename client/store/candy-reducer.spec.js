@@ -69,7 +69,7 @@ describe('Thunks', () => {
     })
 
     it('sets the received candies on state', async () => {
-      await store.dispatch(getSelectedCandyThunk(1))
+      await store.dispatch(getSelectedCandyThunk())
       const state = store.getState()
       expect(state.selectedCandy).to.deep.equal([candyOne])
     })

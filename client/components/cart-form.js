@@ -13,7 +13,7 @@ const CartItem = props => {
     return (
       <tr>
         <td>
-          <CartCandy candy={candy} />
+          <CartCandy product={candy} />
         </td>
       </tr>
     )
@@ -45,8 +45,8 @@ class Cart extends React.Component {
           <div>
             <table>
               <tbody>
-                {candies.map(candy => (
-                  <CartItem candy={candy} key={candy.id} />
+                {candies.map(product => (
+                  <CartItem candy={product} key={product.candy.id} />
                 ))}
               </tbody>
             </table>
@@ -69,7 +69,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getCart: () => dispatch(getCartThunk(1))
+  getCart: () => dispatch(getCartThunk())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
