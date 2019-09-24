@@ -1,6 +1,8 @@
 import React from 'react'
-import Candy from './candy'
-import {orderNumberGenerator} from '../../public/utilities'
+import {connect} from 'react-redux'
+
+// import Candy from './candy'
+// import {orderNumberGenerator} from '../../public/utilities'
 
 class OrderConfirmation extends React.Component {
   render() {
@@ -11,10 +13,14 @@ class OrderConfirmation extends React.Component {
           An order confirmation email has been sent and we will notify you again
           once your order has shipped.
         </h3>
-        <h4>Your order confirmation number is {orderNumberGenerator()}</h4>
+        <h4>Your order confirmation number is {this.props.orderNumber}</h4>
       </div>
     )
   }
 }
 
-export default OrderConfirmation
+const mapStateToProps = state => ({
+  orderNumber: state.cart.orderNumber
+})
+
+export default connect(mapStateToProps, null)(OrderConfirmation)

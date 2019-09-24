@@ -1,8 +1,8 @@
-export const priceConverter = priceInPennies => {
+const priceConverter = priceInPennies => {
   return priceInPennies / 100
 }
 
-export const calculateTotal = products => {
+const calculateTotal = products => {
   let total = 0
   for (let i = 0; i < products.length; i++) {
     total += products[i].candy.price * products[i].amount
@@ -11,6 +11,13 @@ export const calculateTotal = products => {
 }
 
 const max = 99999999
-export const orderNumberGenerator = () => {
+
+const orderNumberGenerator = () => {
   return Math.floor(Math.random() * Math.floor(max))
+}
+
+module.exports = {
+  priceConverter,
+  calculateTotal,
+  orderNumberGenerator
 }

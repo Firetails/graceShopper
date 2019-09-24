@@ -40,13 +40,13 @@ const candies = [
   }
 ]
 
-const carts = [{status: 'cart'}, {status: 'cart'}, {status: 'cart'}]
+// const carts = [{status: 'order'}, {status: 'cart'}, {status: 'cart'}]
 
-const cartCandy = [
-  {cartId: 1, candyId: 1, amount: 3},
-  {cartId: 1, candyId: 2, amount: 3},
-  {cartId: 2, candyId: 1, amount: 3}
-]
+// const cartCandy = [
+//   {cartId: 1, candyId: 1, amount: 3},
+//   {cartId: 1, candyId: 2, amount: 3},
+//   {cartId: 2, candyId: 1, amount: 3}
+// ]
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -62,17 +62,17 @@ async function seed() {
     })
   )
 
-  await Promise.all(
-    carts.map(cart => {
-      return Cart.create(cart)
-    })
-  )
+  // await Promise.all(
+  //   carts.map(cart => {
+  //     return Cart.create(cart)
+  //   })
+  // )
 
-  await Promise.all(
-    cartCandy.map(el => {
-      return CartCandy.create(el)
-    })
-  )
+  // await Promise.all(
+  //   cartCandy.map(el => {
+  //     return CartCandy.create(el)
+  //   })
+  // )
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${candies.length} candies`)
