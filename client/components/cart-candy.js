@@ -10,7 +10,7 @@ class CartCandy extends React.Component {
       quantity: 0
     }
     this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onUpdateSubmit = this.onUpdateSubmit.bind(this)
   }
   componentDidMount() {
     this.setState({quantity: this.props.candy.cartCandy.amount})

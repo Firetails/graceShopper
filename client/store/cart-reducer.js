@@ -69,9 +69,9 @@ export const updateCartCandyThunk = (
   }
 }
 
-export const clearCartCandyThunk = (cartId, candyId) => async dispatch => {
+export const clearCartCandyThunk = () => async dispatch => {
   try {
-    const {data} = await Axios.delete(`/api/cart/${cartId}/${candyId}`)
+    const {data} = await Axios.delete(`/api/cart`)
     dispatch(clearCart())
   } catch (err) {
     console.error(err)
