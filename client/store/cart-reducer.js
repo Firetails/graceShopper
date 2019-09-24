@@ -58,7 +58,6 @@ export const updateCartCandyThunk = (
 ) => async dispatch => {
   try {
     const {data} = await Axios.put(`/api/cart/${cartId}/${candyId}/${amount}`)
-    console.log(data)
     dispatch(updateCartCandy(data[1]))
   } catch (err) {
     console.error(err)
