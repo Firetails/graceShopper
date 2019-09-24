@@ -48,15 +48,14 @@ router.put('/:cartId/:candyId/:amount', async (req, res, next) => {
 })
 
 router.delete('/:cartId/:candyId', async (req, res, next) => {
-  console.log('Delete route!!')
   try {
-    let destroy = await CartCandy.destroy({
+    let cartCandy = await CartCandy.findAll({
       where: {
         candyId: req.params.candyId,
         cartId: req.params.cartId
       }
     })
-    console.log('Destroyed return: ', destroy)
+    await cartCandy[0].destroy()
     res.json('cart candy destroyed')
   } catch (error) {
     next(error)
