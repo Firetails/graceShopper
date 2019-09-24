@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getSelectedCandyThunk} from '../reducers/candy-reducer'
-import {addCandyToCartThunk} from '../reducers/cart-reducer'
+import {getSelectedCandyThunk} from '../store/candy-reducer'
+import {addCandyToCartThunk} from '../store/cart-reducer'
 
 import {priceConverter} from '../../public/utilities'
 
@@ -9,7 +9,7 @@ class SelectedCandy extends React.Component {
   constructor() {
     super()
     this.state = {
-      quantity: ''
+      quantity: 0
     }
   }
 
@@ -19,8 +19,13 @@ class SelectedCandy extends React.Component {
     })
   }
 
-  onSubmit = () => {
-    this.props.addToCart(1, this.props.selectedCandy.id, this.state.quantity)
+  onSubmit = event => {
+    event.preventDefault()
+    this.props.addToCart(
+      this.props.cartId,
+      this.props.selectedCandy.id,
+      this.state.quantity
+    )
   }
 
   componentDidMount() {
