@@ -2,16 +2,26 @@ const router = require('express').Router()
 const {Cart, CartCandy, Candy} = require('../db/models')
 const {isAdmin} = require('./security')
 
-router.get('/:cartId', async (req, res, next) => {
+router.get('/', (req, res, next) => {
   try {
-    const cart = await Cart.findByPk(req.params.cartId, {
-      include: [{all: true}]
-    })
+    const cart = req.session.cart
     res.json(cart)
   } catch (error) {
     next(error)
   }
 })
+
+//NOTE: KEEP THIS LOGIC FOR WHEN WE NEED TO REQUEST A SUBMITTED ORDER FROM THE DATABASE
+// router.get('/:cartId', async (req, res, next) => {
+//   try {
+//     const cart = await Cart.findByPk(req.params.cartId, {
+//       include: [{all: true}]
+//     })
+//     res.json(cart)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 router.delete('/:cartId', isAdmin, async (req, res, next) => {
   try {
