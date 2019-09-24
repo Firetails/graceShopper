@@ -65,7 +65,7 @@ const createApp = () => {
 
   app.use((req, res, next) => {
     if (!req.session.cart) req.session.cart = []
-    console.log(req.session) // increment THEN log
+
     next() // needed to continue through express middleware
   })
 

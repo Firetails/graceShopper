@@ -13,7 +13,6 @@ router.get('/', (req, res, next) => {
 
 router.post('/:candyId/:amount', async (req, res, next) => {
   try {
-    console.log('POST!!!!', req.params)
     const candy = await Candy.findByPk(req.params.candyId)
     let found = false
     for (let i = 0; i < req.session.cart.length; i++) {
@@ -24,7 +23,7 @@ router.post('/:candyId/:amount', async (req, res, next) => {
       }
     }
     if (!found) {
-      const newCartItem = {candy: candy, amount: req.params.amount}
+      const newCartItem = {candy: candy, amount: Number(req.params.amount)}
       req.session.cart.push(newCartItem)
     }
     res.json(req.session.cart)
@@ -33,15 +32,16 @@ router.post('/:candyId/:amount', async (req, res, next) => {
   }
 })
 
-router.put('/:candyId/:amount', (req, res, next) => {
+router.put('/:candyId/:amount', async (req, res, next) => {
   try {
-    req.session.cart.forEach(el => {
-      if (el.candy.id === req.params.candyId) {
-        el.amount = req.params.amount
-      }
-    })
+    const candy = await Candy.findByPk(req.params.candyId)
 
-    console.log('RESPONSE IN PUT', req.session.cart)
+    for (let i = 0; i < req.session.cart.length; i++) {
+      if (req.session.cart[i].candy.id === candy.id) {
+        req.session.cart[i].amount = Number(req.params.amount)
+      }
+    }
+
     res.json(req.session.cart)
   } catch (error) {
     next(error)
