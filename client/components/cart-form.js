@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk} from '../store/cart-reducer'
+import {getCartThunk, clearCartCandyThunk} from '../store/cart-reducer'
 import CartCandy from './cart-candy'
 import {calculateTotal} from '../../public/utilities'
 const NoCandies = () => {
@@ -13,7 +13,7 @@ const CartItem = props => {
     return (
       <tr>
         <td>
-          <CartCandy candy={candy} />
+          <CartCandy product={candy} />
         </td>
       </tr>
     )
@@ -32,6 +32,7 @@ class Cart extends React.Component {
   onSubmit = event => {
     event.preventDefault()
     this.props.history.push('/orderConfirmation')
+    this.props.clearCart()
   }
 
   render() {
@@ -45,8 +46,8 @@ class Cart extends React.Component {
           <div>
             <table>
               <tbody>
-                {candies.map(candy => (
-                  <CartItem candy={candy} key={candy.id} />
+                {candies.map(product => (
+                  <CartItem candy={product} key={product.candy.id} />
                 ))}
               </tbody>
             </table>
@@ -69,7 +70,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getCart: () => dispatch(getCartThunk(1))
+  getCart: () => dispatch(getCartThunk()),
+  clearCart: () => dispatch(clearCartCandyThunk())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

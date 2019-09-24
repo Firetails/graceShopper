@@ -21,11 +21,7 @@ class SelectedCandy extends React.Component {
 
   onSubmit = event => {
     event.preventDefault()
-    this.props.addToCart(
-      this.props.cartId,
-      this.props.selectedCandy.id,
-      this.state.quantity
-    )
+    this.props.addToCart(this.props.selectedCandy.id, this.state.quantity)
   }
 
   componentDidMount() {
@@ -49,8 +45,10 @@ class SelectedCandy extends React.Component {
             <form onSubmit={this.onSubmit}>
               <label>Quantity: </label>
               <input
-                type="text"
+                type="number"
                 name="quantity"
+                min="0"
+                max="9999"
                 value={this.state.quantity}
                 onChange={event => this.onChange(event)}
               />
@@ -73,8 +71,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getCandy: candyId => dispatch(getSelectedCandyThunk(candyId)),
-    addToCart: (cartId, candyId, amount) =>
-      dispatch(addCandyToCartThunk(cartId, candyId, amount))
+    addToCart: (candyId, amount) =>
+      dispatch(addCandyToCartThunk(candyId, amount))
   }
 }
 
