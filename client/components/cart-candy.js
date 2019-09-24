@@ -10,7 +10,7 @@ class CartCandy extends React.Component {
       quantity: 0
     }
     this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.onUpdateSubmit = this.onUpdateSubmit.bind(this)
   }
   componentDidMount() {
     this.setState({quantity: this.props.product.amount})
@@ -22,10 +22,14 @@ class CartCandy extends React.Component {
     })
   }
 
-  onSubmit = event => {
+  onUpdateSubmit = event => {
     event.preventDefault()
     this.props.updateCart(this.props.product.candy.id, this.state.quantity)
   }
+
+  // onDeleteSubmit = event => {
+
+  // }
 
   render() {
     return (
@@ -35,11 +39,13 @@ class CartCandy extends React.Component {
           <img src={this.props.product.candy.imageUrl} />
         </div>
         <div className="cart-subcontainer-right">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onUpdateSubmit}>
             <label>Quantity: </label>
             <input
-              type="text"
+              type="number"
               name="quantity"
+              min="0"
+              max="9999"
               value={this.state.quantity}
               onChange={event => this.onChange(event)}
             />
@@ -48,6 +54,11 @@ class CartCandy extends React.Component {
               Update Quantity
             </button>
           </form>
+          {/* <form onSubmit={this.onDeleteSubmit}>
+          <button className="delete-button" type="submit">
+              Remove
+            </button>
+          </form> */}
           <p>
             Price: ${priceConverter(
               this.props.product.candy.price * this.state.quantity
