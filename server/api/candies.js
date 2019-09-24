@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Candy = require('../db/models/candy')
+const {isAdmin} = require('./security')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -23,7 +24,7 @@ router.get('/:candyId', async (req, res, next) => {
   }
 })
 
-router.post('/:candyId/:cartId/:amount', async (req, res, next) => {
+router.post('/:candyId/:cartId/:amount', isAdmin, async (req, res, next) => {
   try {
     const selectedCandy = await Candy.findByPk(req.params.candyId)
     const newCartCandy = await selectedCandy.addToCart(

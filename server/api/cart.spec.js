@@ -29,7 +29,7 @@ describe('Cart routes', async () => {
     })
   }) //end describe GET route
   describe('DELETE /api/cart/:cartId', () => {
-    it('destroys a cart based on cartId', async () => {
+    xit('destroys a cart based on cartId', async () => {
       const res = await request(app)
         .delete('/api/cart/1')
         .expect(200)

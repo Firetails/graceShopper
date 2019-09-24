@@ -7,7 +7,25 @@ const NoCandies = () => {
   return <p>There are no candies in the cart!</p>
 }
 
+const CartItem = props => {
+  const candy = props.candy
+  if (candy.amount !== 0) {
+    return (
+      <tr>
+        <td>
+          <CartCandy candy={candy} />
+        </td>
+      </tr>
+    )
+  }
+  return null
+}
+
 class Cart extends React.Component {
+  constructor(props) {
+    super(props)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
   componentDidMount() {
     this.props.getCart()
   }
@@ -17,17 +35,23 @@ class Cart extends React.Component {
   }
 
   render() {
+    const candies = this.props.candies
     return (
       <div className="all-containers">
         <p>Welcome to your cart</p>
-        {!this.props.candies ? (
+        {!candies ? (
           <NoCandies />
         ) : (
           <div>
-            {this.props.candies.map((cartcandy, idx) => (
-              <CartCandy cartcandy={cartcandy} key={idx} />
-            ))}
-            <p>Total: ${calculateTotal(this.props.candies)}</p>
+            <table>
+              <tbody>
+                {candies.map(candy => (
+                  <CartItem candy={candy} key={candy.id} />
+                ))}
+              </tbody>
+            </table>
+
+            <p>Total: ${calculateTotal(candies)}</p>
             <form onSubmit={this.onSubmit}>
               <button className="submit-button" type="submit">
                 Checkout
