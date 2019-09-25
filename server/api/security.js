@@ -1,11 +1,8 @@
-const db = require('../db/db')
-const User = db.model('user')
-async function isAdmin(req, res, next) {
-  if (req.session.passport) {
-    const user = await User.findByPk(req.session.passport.user)
-    if (user.isAdmin) return next()
-  } else {
+const isAdmin = (req, res, next) => {
+  if (!req.user || !req.user.isAdmin) {
     res.redirect('/home')
+  } else {
+    return next()
   }
 }
 
