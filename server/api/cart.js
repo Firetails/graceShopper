@@ -1,11 +1,31 @@
 const router = require('express').Router()
 const {Cart, CartCandy, Candy} = require('../db/models')
 const {isAdmin} = require('./security')
+const orderNumberGenerator = require('../../public/utilities')
 
 router.get('/', (req, res, next) => {
   try {
     const cart = req.session.cart
     res.json(cart)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    // const newOrderNumber = orderNumberGenerator()
+    const cart = await Cart.create({
+      status: 'order'
+    })
+    for (let i = 0; i < req.session.cart.length; i++) {
+      await CartCandy.create({
+        candyId: req.session.cart[i].candy.id,
+        cartId: cart.id,
+        amount: req.session.cart[i].amount
+      })
+    }
+    res.json(cart.orderNumber)
   } catch (error) {
     next(error)
   }
