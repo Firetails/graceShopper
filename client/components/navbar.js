@@ -8,8 +8,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="nav-bar">
     <a href="/home" className="navbar-left">
       <h1 className="page-title"> OKASHI </h1>
-      <p> 🍬 🍬 🍬Japanese Candy In Bulk 🍬 🍬 🍬 </p>
     </a>
+    <p> 🍬 🍬 🍬Japanese Candy In Bulk 🍬 🍬 🍬 </p>
+
     <nav>
       {isLoggedIn ? (
         <div className="navbar-right">
