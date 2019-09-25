@@ -7,7 +7,6 @@ import {connect} from 'react-redux'
 // import Candy from './candy'
 // import {orderNumberGenerator} from '../../public/utilities'
 
-
 class OrderConfirmation extends React.Component {
   render() {
     return (
@@ -16,10 +15,8 @@ class OrderConfirmation extends React.Component {
         <p>
           An order confirmation email has been sent and we will notify you again
           once your order has shipped.
-
         </p>
-        <p>Your order confirmation number is {this.props.orderNumber}</p>
-
+        <p>Your order confirmation number is {orderNumberGenerator()}</p>
       </div>
     )
   }
