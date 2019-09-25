@@ -1,16 +1,18 @@
 import Axios from 'axios'
 
 const initialState = {
-  productsInCart: [] //an array of objects (contains candy object and amount)
+  productsInCart: [],
+  orderNumber: null //an array of objects (contains candy object and amount)
 }
 
 //action types
 const UPDATE_CARTCANDY = 'UPDATE_CARTCANDY'
-const CLEAR_CART = 'CLEAR_CART'
+const SUBMIT_ORDER = 'SUBMIT_ORDER'
 
 //action creators
-const clearCart = () => ({
-  type: CLEAR_CART
+const submitOrder = orderNumber => ({
+  type: SUBMIT_ORDER,
+  orderNumber
 })
 
 const updateCartCandy = cart => ({
@@ -46,10 +48,12 @@ export const updateCartCandyThunk = (candyId, amount) => async dispatch => {
   }
 }
 
-export const clearCartCandyThunk = () => async dispatch => {
+export const submitOrderThunk = () => async dispatch => {
   try {
-    const {data} = await Axios.delete(`/api/cart`)
-    dispatch(clearCart())
+    const {data} = await Axios.post('/api/cart/')
+
+    await Axios.delete(`/api/cart`)
+    dispatch(submitOrder(data))
   } catch (err) {
     console.error(err)
   }
@@ -64,10 +68,11 @@ const cartReducer = (state = initialState, action) => {
         productsInCart: action.cart
       }
     }
-    case CLEAR_CART:
+    case SUBMIT_ORDER:
       return {
         ...state,
-        productsInCart: []
+        productsInCart: [],
+        orderNumber: action.orderNumber
       }
     default:
       return state

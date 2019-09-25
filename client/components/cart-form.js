@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCartThunk, clearCartCandyThunk} from '../store/cart-reducer'
+import {getCartThunk, submitOrderThunk} from '../store/cart-reducer'
 import CartCandy from './cart-candy'
 import {calculateTotal} from '../../public/utilities'
 const NoCandies = () => {
@@ -32,10 +32,12 @@ class Cart extends React.Component {
   //checkout button
   onSubmit = event => {
     event.preventDefault()
+
     if (this.props.candies.length !== 0) {
       this.props.history.push('/orderConfirmation')
       this.props.clearCart()
     }
+
   }
 
   render() {
@@ -73,7 +75,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCart: () => dispatch(getCartThunk()),
-  clearCart: () => dispatch(clearCartCandyThunk())
+  submitOrder: () => dispatch(submitOrderThunk())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
