@@ -1,9 +1,45 @@
+body {
+  font-family: sans-serif;
+}
+
+.page-title {
+  color: white;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+}
+
+#google-icon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 10px;
+}
+
+.all-products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .item-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  margin: 3px;
+  height: 250px;
+  width: 300px;
+}
+
+.single-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 3px;
 }
 
@@ -31,25 +67,21 @@
   align-items: center;
   justify-content: space-between;
   height: 125px;
-  background-color: lightgray;
+  background-color: slategrey;
+  margin: 0;
+  color: white;
 }
 
 .navbar-right {
-  /* width: 40%; */
   display: flex;
-  /* justify-content: flex-end; */
-  box-sizing: border-box;
   flex-grow: 1;
-  /* overflow: hidden;  */
-  /* align-items: center; */
 }
 .navbar-left {
-  /* width: 60%; */
   display: flex;
-  box-sizing: border-box;
   flex-grow: 1;
-  overflow: hidden;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: white;
 }
 
 .submit-button {
@@ -66,4 +98,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

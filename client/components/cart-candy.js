@@ -24,7 +24,6 @@ class CartCandy extends React.Component {
 
   onUpdateSubmit = event => {
     event.preventDefault()
-
     this.props.updateCart(this.props.product.candy.id, this.state.quantity)
   }
 

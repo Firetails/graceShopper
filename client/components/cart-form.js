@@ -29,17 +29,19 @@ class Cart extends React.Component {
   componentDidMount() {
     this.props.getCart()
   }
+  //checkout button
   onSubmit = event => {
     event.preventDefault()
-    this.props.history.push('/orderConfirmation')
-    this.props.clearCart()
+    if (this.props.candies.length !== 0) {
+      this.props.history.push('/orderConfirmation')
+      this.props.clearCart()
+    }
   }
 
   render() {
     const candies = this.props.candies
     return (
       <div className="all-containers">
-        <p>Welcome to your cart</p>
         {!candies ? (
           <NoCandies />
         ) : (

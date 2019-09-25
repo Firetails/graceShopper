@@ -14,11 +14,11 @@ class Candies extends React.Component {
 
   render() {
     return (
-      <div className="all-containers">
+      <div>
         {!this.props.candies ? (
           <NoCandies />
         ) : (
-          <div>
+          <div className="all-products">
             {this.props.candies.map((candy, idx) => (
               <Candy candy={candy} key={idx} />
             ))}

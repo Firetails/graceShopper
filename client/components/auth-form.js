@@ -21,10 +21,13 @@ const AuthForm = props => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button type="submit" className="submit-button">
+            {displayName}
+          </button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      {/* <img src="../public/icons8-color-48.png" /> */}
       <a href="/auth/google">{displayName} with Google</a>
     </div>
   )
