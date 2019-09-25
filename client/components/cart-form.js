@@ -35,9 +35,8 @@ class Cart extends React.Component {
 
     if (this.props.candies.length !== 0) {
       this.props.history.push('/orderConfirmation')
-      this.props.clearCart()
+      this.props.submitOrder()
     }
-
   }
 
   render() {

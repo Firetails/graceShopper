@@ -1,4 +1,4 @@
-export const priceConverter = priceInPennies => {
+const priceConverter = priceInPennies => {
   const price = priceInPennies / 100
   return price.toFixed(2)
 }
