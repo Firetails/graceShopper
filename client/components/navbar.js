@@ -28,7 +28,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <div className="navbar-right">
           {/* The navbar will show these links before you log in */}
           <Link className="page-title" to="/cart">
-            <img src="../../public/cart.png" />
+            {' '}
+            🛒
+            {/* <img src="../../public/cart.png"/> */}
           </Link>
           <Link className="page-title" to="/login">
             Login
