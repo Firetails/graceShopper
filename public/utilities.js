@@ -1,5 +1,6 @@
-const priceConverter = priceInPennies => {
-  return priceInPennies / 100
+export const priceConverter = priceInPennies => {
+  const price = priceInPennies / 100
+  return price.toFixed(2)
 }
 
 const calculateTotal = products => {
