@@ -12,11 +12,10 @@ class Candy extends React.Component {
     return (
       <div className="item-container">
         <a href={`/candies/${this.props.candy.id}`}>
-          <h1>{this.props.candy.name}</h1>{' '}
+          <p>{this.props.candy.name}</p> <img src={this.props.candy.imageUrl} />
+          {/* <p>{this.props.candy.description}</p> */}
+          <p>Price: ${priceConverter(this.props.candy.price)} /lb </p>
         </a>
-        <img src={this.props.candy.imageUrl} />
-        <p>{this.props.candy.description}</p>
-        <p>Price: ${priceConverter(this.props.candy.price)} /lb </p>
       </div>
     )
   }

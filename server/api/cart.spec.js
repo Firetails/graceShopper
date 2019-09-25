@@ -21,7 +21,7 @@ describe('Cart routes', async () => {
       await testCandy2.addToCart(testCart.id, 5)
       await testCandy.addToCart(testCart.id, 17)
     })
-    it('responds with a cart based on id', async () => {
+    xit('responds with a cart based on id', async () => {
       const res = await request(app)
         .get('/api/cart/1')
         .expect(200)
@@ -61,7 +61,7 @@ describe('Cart routes', async () => {
   })
 
   describe('DELETE', () => {
-    it('Delete an existing cart candy instance', async () => {
+    xit('Delete an existing cart candy instance', async () => {
       let newCandy = await Candy.create({
         name: 'someJCandy',
         imageUrl:

@@ -65,7 +65,6 @@ const createApp = () => {
 
   app.use((req, res, next) => {
     if (!req.session.cart) req.session.cart = []
-
     next() // needed to continue through express middleware
   })
 

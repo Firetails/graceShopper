@@ -2,8 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getSelectedCandyThunk} from '../store/candy-reducer'
 import {addCandyToCartThunk} from '../store/cart-reducer'
-
 import {priceConverter} from '../../public/utilities'
+import {toast} from 'react-toastify'
 
 class SelectedCandy extends React.Component {
   constructor() {
@@ -21,6 +21,7 @@ class SelectedCandy extends React.Component {
 
   onSubmit = event => {
     event.preventDefault()
+    // toast("Added to Cart!")
     this.props.addToCart(this.props.selectedCandy.id, this.state.quantity)
   }
 
@@ -36,12 +37,12 @@ class SelectedCandy extends React.Component {
         {!this.props.selectedCandy ? (
           <h1>Candy Not Found!!!</h1>
         ) : (
-          <div className="item-container">
+          <div className="single-container">
             <h1>{selectedCandy.name}</h1>
             <img src={selectedCandy.imageUrl} />
             <p>Description: {selectedCandy.description}</p>
             <p>Ingredients: {selectedCandy.ingredients}</p>
-            <h6>Price: ${priceConverter(selectedCandy.price)} /lb </h6>
+            <p>Price: ${priceConverter(selectedCandy.price)} /lb </p>
             <form onSubmit={this.onSubmit}>
               <label>Quantity: </label>
               <input
@@ -77,3 +78,16 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectedCandy)
+
+// import React, { Component } from 'react';
+// import { toast } from 'react-toastify';
+// // import 'react-toastify/dist/ReactToastify.css';
+
+// // Call it once in your app. At the root of your app is the best place
+// toast.configure()
+
+// const App = () => {
+//   const notify = () => toast("Wow so easy !");
+
+//   return <button onClick={notify}>Notify !</button>;
+// }
